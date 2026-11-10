@@ -6,7 +6,7 @@ from langchain_openai import ChatOpenAI
 
 # Read the key straight from .env next to this file — ignores shell exports.
 env = dotenv_values(Path(__file__).with_name(".env"))
-api_key = (env.get("OPENAI_API_KEY") or "").strip()
+api_key = (env.get("OPENAI_API_KEY") or "").strip().strip("\"'")
 
 if not api_key.startswith("sk-"):
     sys.exit("No valid OPENAI_API_KEY in .env. Put it on one line: OPENAI_API_KEY=sk-...")
